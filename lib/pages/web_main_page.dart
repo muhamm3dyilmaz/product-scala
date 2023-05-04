@@ -11,7 +11,7 @@ class _WebMainPageState extends State<WebMainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("zehra")),
+      appBar: AppBar(title: const Text("Muhammed")),
     );
   }
 }
