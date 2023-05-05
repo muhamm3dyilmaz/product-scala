@@ -1,11 +1,9 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:product_scala/ClipPath/ClipPath.dart';
-import 'package:product_scala/Controller/index.dart';
-import 'package:product_scala/Widget/CircularWidget.dart';
+import 'package:product_scala/controllers/index_controller.dart';
+import 'package:product_scala/widgets/CircularWidget.dart';
 
 class WebMainPage extends StatefulWidget {
   const WebMainPage({super.key});
@@ -23,10 +21,12 @@ class _WebMainPageState extends State<WebMainPage> {
     indexController = Get.put(IndexController(), tag: "index");
   }
 
+  @override
   Widget build(BuildContext context) {
-    List itemler = [
+    List circleItems = [
+      //About Us Circle
       CirculeWidget(
-        imageUrl: "https://www.shutterstock.com/image-vector/gamer-mascot-logo-streamer-esport-260nw-1683249331.jpg".obs,
+        backgroundImage: 'assets/images/question_mark_image.png'.obs,
         indexItem: 0.obs,
         onTap: () {
           indexController!.index.value = 0;
@@ -36,47 +36,20 @@ class _WebMainPageState extends State<WebMainPage> {
       const SizedBox(
         width: 30,
       ),
+      //Categorry Circle
       CirculeWidget(
-          imageUrl: "https://media.istockphoto.com/id/1182383458/tr/vekt%C3%B6r/gamer-esport-maskotu-logo-tasar%C4%B1m.jpg?s=612x612&w=0&k=20&c=AjpWM3GkWSNl24Xb9E7h8dp7QmCdlYJm8EFf_9pylDU=".obs,
-          indexItem: 1.obs,
-          onTap: () {
-            indexController!.index.value = 1;
-            indexController!.selectedMenuIndex.value = 1;
-          }),
-      const SizedBox(
-        width: 30,
-      ),
-      CirculeWidget(
-          imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQF7bnTUsKlMLRaZG_AEx0MU8XCH9ZxcptiQ&usqp=CAU".obs,
-          indexItem: 2.obs,
-          onTap: () {
-            indexController!.index.value = 2;
-            indexController!.selectedMenuIndex.value = 2;
-          }),
-      const SizedBox(
-        width: 30,
-      ),
-      CirculeWidget(
-          imageUrl:
-              "https://media.istockphoto.com/id/1320799591/vector/game-on-neon-game-controller-or-joystick-for-game-console-on-blue-background.jpg?s=612x612&w=0&k=20&c=CbxRq6ctP5Ta1QLu18UMtvgJf4D-zFpTMm0Rz14_Gy0="
-                  .obs,
-          indexItem: 3.obs,
-          onTap: () {
-            indexController!.index.value = 3;
-            indexController!.selectedMenuIndex.value = 3;
-          }),
-      const SizedBox(
-        width: 30,
-      ),
-      CirculeWidget(
-        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJp5Yrs5nd6TH_19CH2sjXERog11DG5OAn5Q&usqp=CAU".obs,
-        indexItem: 4.obs,
+        backgroundImage: 'assets/images/category_image.png'.obs,
+        indexItem: 1.obs,
         onTap: () {
-          indexController!.index.value = 4;
-          indexController!.selectedMenuIndex.value = 4;
+          indexController!.index.value = 1;
+          indexController!.selectedMenuIndex.value = 1;
         },
       ),
+      const SizedBox(
+        width: 30,
+      ),
     ];
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
@@ -85,6 +58,7 @@ class _WebMainPageState extends State<WebMainPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                //KULLANIM AMACI?????
                 BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                   child: Container(
@@ -93,6 +67,8 @@ class _WebMainPageState extends State<WebMainPage> {
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 6, 0, 89),
                     ),
+
+                    //Clipper
                     child: ClipPath(
                       clipper: MyClipper(),
                       child: Container(
@@ -116,13 +92,20 @@ class _WebMainPageState extends State<WebMainPage> {
                     ),
                   ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  color: Colors.amber,
+
+                //Pages
+                Obx(
+                  () => Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    color: Colors.amber,
+                    child: indexController!.getPages(),
+                  ),
                 ),
               ],
             ),
+
+            //Company Logo
             Positioned(
               right: 20,
               left: 20,
@@ -138,14 +121,14 @@ class _WebMainPageState extends State<WebMainPage> {
                   ),
 
                   const SizedBox(width: 500),
-                  //circle avatarımı çağırdığım kısım
 
+                  // Circle Avatar Calls
                   SizedBox(
                     width: 753,
                     height: 40,
                     child: ListView.builder(
-                      itemBuilder: (context, index) => itemler[index],
-                      itemCount: itemler.length,
+                      itemBuilder: (context, index) => circleItems[index],
+                      itemCount: circleItems.length,
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                     ),

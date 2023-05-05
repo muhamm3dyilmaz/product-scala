@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../ClipPath/pointerClipper.dart';
-import '../Controller/index.dart';
+import 'package:product_scala/controllers/index_controller.dart';
 
 //sol menu içindeki circleavatar widgeti
 class CirculeWidget extends StatefulWidget {
   const CirculeWidget({
     Key? key,
     required this.indexItem,
-    required this.imageUrl,
+    required this.backgroundImage,
     required this.onTap,
   }) : super(key: key);
 
   final RxInt indexItem;
   final Function() onTap;
-  final RxString imageUrl;
+  final RxString backgroundImage;
 
   @override
   State<CirculeWidget> createState() => _CirculeWidgetState();
@@ -36,24 +34,6 @@ class _CirculeWidgetState extends State<CirculeWidget> {
             onTap: widget.onTap,
             child: Row(
               children: [
-                // ClipPath(
-                //   // clipper: PointerClipper(),
-                //   child: widget.indexItem == indexController!.index
-                //       ? Container(
-                //           width: 15,
-                //           height: 30,
-                //           decoration: const BoxDecoration(
-                //               gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [
-                //             Color(0xff2d26333),
-                //             Color.fromARGB(241, 215, 82, 25),
-                //           ])),
-                //         )
-                //       : Container(
-                //           width: 15,
-                //           height: 30,
-                //           color: Colors.transparent,
-                //         ),
-                // ),
                 const SizedBox(
                   width: 5,
                 ),
@@ -83,7 +63,7 @@ class _CirculeWidgetState extends State<CirculeWidget> {
                         child: CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 15,
-                          backgroundImage: NetworkImage(widget.imageUrl.value),
+                          backgroundImage: AssetImage(widget.backgroundImage.value),
                         ),
                       ),
                     ),

@@ -1,5 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:product_scala/pages/about_us_page.dart';
+import 'package:product_scala/pages/category_page.dart';
 
 class IndexController extends GetxController {
   RxInt index = 0.obs;
@@ -7,9 +10,12 @@ class IndexController extends GetxController {
 
   RxInt gecis = 0.obs;
 
-  List<Widget> menu = [];
+  List<Widget> menu = const [
+    AboutUsPage(),
+    CategoryPage(),
+  ];
 
-  Widget getRightPage() {
+  Widget getPages() {
     return menu[selectedMenuIndex.value];
   }
 }
