@@ -1,9 +1,7 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:product_scala/ClipPath/ClipPath.dart';
 import 'package:product_scala/controllers/index_controller.dart';
-import 'package:product_scala/widgets/CircularWidget.dart';
+import 'package:product_scala/widgets/menu_button_widget.dart';
 
 class WebMainPage extends StatefulWidget {
   const WebMainPage({super.key});
@@ -23,34 +21,93 @@ class _WebMainPageState extends State<WebMainPage> {
 
   @override
   Widget build(BuildContext context) {
-    List circleItems = [
-      //About Us Circle
-      CirculeWidget(
-        backgroundImage: 'assets/images/question_mark_image.png'.obs,
-        indexItem: 0.obs,
-        onTap: () {
+    List menuItems = [
+      //Hakkımızda Menu Button
+      MenuButtonWidget(
+        buttonwidth: 70.0.obs,
+        itemIndex: 0.obs,
+        menuName: "Hakkımızda".obs,
+        ontap: () {
           indexController!.index.value = 0;
           indexController!.selectedMenuIndex.value = 0;
         },
       ),
-      const SizedBox(
-        width: 30,
-      ),
-      //Categorry Circle
-      CirculeWidget(
-        backgroundImage: 'assets/images/category_image.png'.obs,
-        indexItem: 1.obs,
-        onTap: () {
+
+      //Yüzük Menu Button
+      MenuButtonWidget(
+        buttonwidth: 70.0.obs,
+        itemIndex: 1.obs,
+        menuName: "Yüzük".obs,
+        ontap: () {
           indexController!.index.value = 1;
           indexController!.selectedMenuIndex.value = 1;
         },
       ),
-      const SizedBox(
-        width: 30,
+      //Kolye Menu Button
+      MenuButtonWidget(
+        buttonwidth: 70.0.obs,
+        itemIndex: 2.obs,
+        menuName: "Kolye".obs,
+        ontap: () {
+          indexController!.index.value = 2;
+          indexController!.selectedMenuIndex.value = 2;
+        },
+      ),
+
+      //Bileklik Menu Button
+      MenuButtonWidget(
+        buttonwidth: 70.0.obs,
+        itemIndex: 3.obs,
+        menuName: "Bileklik".obs,
+        ontap: () {
+          indexController!.index.value = 3;
+          indexController!.selectedMenuIndex.value = 3;
+        },
       ),
     ];
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 197, 197, 197),
+        toolbarHeight: 77,
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(
+                  Icons.diamond,
+                  color: Colors.black,
+                  size: 34,
+                ),
+                Text(
+                  "Silös Mücevherat",
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontFamily: 'GreatVibes',
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 40,
+                  child: ListView.builder(
+                    itemBuilder: (context, index) => menuItems[index],
+                    itemCount: menuItems.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -58,41 +115,6 @@ class _WebMainPageState extends State<WebMainPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //KULLANIM AMACI?????
-                BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 50,
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 6, 0, 89),
-                    ),
-
-                    //Clipper
-                    child: ClipPath(
-                      clipper: MyClipper(),
-                      child: Container(
-                        width: 753,
-                        height: 60,
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topRight,
-                            end: Alignment.bottomRight,
-                            colors: <Color>[
-                              Color(0xFF59479e),
-                              Color(0xFF836FAF),
-                            ],
-                            tileMode: TileMode.mirror,
-                          ),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.fromLTRB(10, 15, 10, 0),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-
                 //Pages
                 Obx(
                   () => Container(
@@ -103,38 +125,6 @@ class _WebMainPageState extends State<WebMainPage> {
                   ),
                 ),
               ],
-            ),
-
-            //Company Logo
-            Positioned(
-              right: 20,
-              left: 20,
-              child: Row(
-                children: [
-                  const Opacity(
-                    opacity: 0.7,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 15,
-                      backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXQ08g2uI7XskFyHtGggLPHfKOSY6W1ywuFg&usqp=CAU"),
-                    ),
-                  ),
-
-                  const SizedBox(width: 500),
-
-                  // Circle Avatar Calls
-                  SizedBox(
-                    width: 753,
-                    height: 40,
-                    child: ListView.builder(
-                      itemBuilder: (context, index) => circleItems[index],
-                      itemCount: circleItems.length,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                    ),
-                  ),
-                ],
-              ),
             ),
           ],
         ),
