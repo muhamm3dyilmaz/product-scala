@@ -69,7 +69,7 @@ class _WebMainPageState extends State<WebMainPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 197, 197, 197),
-        toolbarHeight: 77,
+        toolbarHeight: 80,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -84,7 +84,7 @@ class _WebMainPageState extends State<WebMainPage> {
                 Text(
                   "Silös Mücevherat",
                   style: TextStyle(
-                    fontSize: 26,
+                    fontSize: 30,
                     fontFamily: 'GreatVibes',
                     color: Colors.black,
                   ),

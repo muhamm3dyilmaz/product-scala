@@ -32,6 +32,8 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget> {
   Widget build(BuildContext context) {
     return Obx(
       () => InkWell(
+        splashColor: Colors.transparent,
+        hoverColor: Colors.transparent,
         onHover: (value) {
           setState(() {
             isHover = value;
@@ -44,6 +46,9 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget> {
           child: Column(
             children: [
               const Spacer(),
+              const Divider(
+                color: Colors.black,
+              ),
               Text(
                 widget.menuName.value,
                 style: TextStyle(
