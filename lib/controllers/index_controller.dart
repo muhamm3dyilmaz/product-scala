@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:product_scala/pages/about_us_page.dart';
 import 'package:product_scala/pages/necklace_page.dart';
+import 'package:product_scala/pages/product_add_page.dart';
 import 'package:product_scala/pages/ring_page.dart';
+import 'package:product_scala/pages/watch_page.dart';
 import 'package:product_scala/pages/wristband_page.dart';
 
 class IndexController extends GetxController {
@@ -16,6 +18,8 @@ class IndexController extends GetxController {
     RingPage(),
     NecklacePage(),
     WristbandPage(),
+    WatchPage(),
+    ProductAddPage(),
   ];
 
   Widget getPages() {

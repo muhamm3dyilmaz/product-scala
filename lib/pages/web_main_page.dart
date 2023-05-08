@@ -32,7 +32,6 @@ class _WebMainPageState extends State<WebMainPage> {
           indexController!.selectedMenuIndex.value = 0;
         },
       ),
-
       //Yüzük Menu Button
       MenuButtonWidget(
         buttonwidth: 70.0.obs,
@@ -53,7 +52,6 @@ class _WebMainPageState extends State<WebMainPage> {
           indexController!.selectedMenuIndex.value = 2;
         },
       ),
-
       //Bileklik Menu Button
       MenuButtonWidget(
         buttonwidth: 70.0.obs,
@@ -62,6 +60,26 @@ class _WebMainPageState extends State<WebMainPage> {
         ontap: () {
           indexController!.index.value = 3;
           indexController!.selectedMenuIndex.value = 3;
+        },
+      ),
+      //Saat Menu Button
+      MenuButtonWidget(
+        buttonwidth: 70.0.obs,
+        itemIndex: 4.obs,
+        menuName: "Saat".obs,
+        ontap: () {
+          indexController!.index.value = 4;
+          indexController!.selectedMenuIndex.value = 4;
+        },
+      ),
+      //Ürün Ekle Menu Button
+      MenuButtonWidget(
+        buttonwidth: 70.0.obs,
+        itemIndex: 5.obs,
+        menuName: "Ürün Ekle".obs,
+        ontap: () {
+          indexController!.index.value = 5;
+          indexController!.selectedMenuIndex.value = 5;
         },
       ),
     ];
@@ -117,10 +135,9 @@ class _WebMainPageState extends State<WebMainPage> {
               children: [
                 //Pages
                 Obx(
-                  () => Container(
+                  () => SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
-                    color: Colors.amber,
                     child: indexController!.getPages(),
                   ),
                 ),
