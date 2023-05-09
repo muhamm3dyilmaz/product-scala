@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:product_scala/controllers/index_controller.dart';
+import 'package:product_scala/controllers/index/index_controller.dart';
 
 class MenuButtonWidget extends StatefulWidget {
   const MenuButtonWidget({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:product_scala/controllers/index_controller.dart';
+import 'package:product_scala/controllers/index/index_controller.dart';
 import 'package:product_scala/widgets/menu_button_widget.dart';
 
 class WebMainPage extends StatefulWidget {
@@ -12,7 +12,6 @@ class WebMainPage extends StatefulWidget {
 
 class _WebMainPageState extends State<WebMainPage> {
   IndexController? indexController;
-  Color splash = const Color(0xFF2D2655);
   @override
   void initState() {
     super.initState();

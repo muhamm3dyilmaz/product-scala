@@ -14,6 +14,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "carousel_slider",
+      "rootUri": "file:///C:/Users/HP/AppData/Local/Pub/Cache/hosted/pub.dev/carousel_slider-4.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///C:/Users/HP/AppData/Local/Pub/Cache/hosted/pub.dev/characters-1.2.1",
       "packageUri": "lib/",
@@ -158,7 +164,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-05-08T08:42:02.476416Z",
+  "generated": "2023-05-09T10:44:25.948774Z",
   "generator": "pub",
   "generatorVersion": "2.19.0"
 }
