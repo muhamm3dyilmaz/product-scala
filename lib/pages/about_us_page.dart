@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:product_scala/widgets/service_container_widget.dart';
 
 class AboutUsPage extends StatefulWidget {
   const AboutUsPage({super.key});
@@ -35,12 +37,12 @@ class _AboutUsPageState extends State<AboutUsPage> {
                       (item) => Image.asset(
                         item['image_path'],
                         fit: BoxFit.fill,
-                        width: 1100,
+                        width: double.infinity,
                       ),
                     )
                     .toList(),
                 options: CarouselOptions(
-                  height: 600,
+                  height: 650,
                   scrollPhysics: const BouncingScrollPhysics(),
                   autoPlay: true,
                   aspectRatio: 2,
@@ -55,7 +57,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                 ),
               ),
 
-              // Neden Silös Mücevherat
+              //Neden Silös Mücevherat
               Padding(
                 padding: const EdgeInsets.only(top: 100.0),
 
@@ -110,7 +112,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                       ),
                     ),
 
-                    //Grid View
+                    //Hizmetler
                     Padding(
                       padding: const EdgeInsets.only(top: 40.0, bottom: 40, left: 60, right: 60),
                       child: Column(
@@ -122,64 +124,88 @@ class _AboutUsPageState extends State<AboutUsPage> {
                             style: TextStyle(color: Colors.black, fontSize: 16, fontFamily: 'SignikaNegative'),
                           ),
 
-                          //Product Containers
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0, right: 10, top: 30, bottom: 30),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    width: 250,
-                                    height: 150,
-                                    decoration: const BoxDecoration(
-                                      color: Color.fromARGB(255, 197, 197, 197),
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          Color.fromARGB(255, 210, 210, 210),
-                                          Color.fromARGB(255, 136, 136, 136),
-                                        ],
-                                        begin: Alignment.bottomLeft,
-                                        end: Alignment.topRight,
-                                      ),
-                                    ),
+                          //Product Animated Containers
+                          SizedBox(
+                            height: 500,
+                            width: 1000,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10.0, right: 10, top: 30, bottom: 30),
+                              child: Column(
+                                children: [
+                                  //Hizmetler 1
+                                  Padding(
+                                    padding: const EdgeInsets.all(25.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: const [
-                                        Padding(
-                                          padding: EdgeInsets.only(right: 3),
-                                          child: Icon(
-                                            Icons.menu_book_sharp,
-                                            color: Colors.white,
-                                          ),
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        //Yüzük Service Container
+                                        ServiceContainerWidget(
+                                          onTap: () {},
+                                          serviceName: "Yüzükler".obs,
+                                          iconPath: 'assets/images/diamond-ring.png'.obs,
                                         ),
-                                        Text(
-                                          "Yüzükler",
-                                          style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'SignikaNegative'),
+
+                                        //Kolye Service Container
+                                        ServiceContainerWidget(
+                                          onTap: () {},
+                                          serviceName: "Kolyeler".obs,
+                                          iconPath: 'assets/images/necklace.png'.obs,
                                         ),
                                       ],
                                     ),
                                   ),
-                                ),
-                                Container(width: 250, height: 150, color: const Color.fromARGB(255, 197, 197, 197)),
-                              ],
-                            ),
-                          ),
 
-                          //Product Containers
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0, right: 10, top: 30, bottom: 30),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(width: 250, height: 150, color: const Color.fromARGB(255, 197, 197, 197)),
-                                Container(width: 250, height: 150, color: const Color.fromARGB(255, 197, 197, 197)),
-                              ],
+                                  //Hizmetler 2
+                                  Padding(
+                                    padding: const EdgeInsets.all(25.0),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        //Yüzük Service Container
+                                        ServiceContainerWidget(
+                                          onTap: () {},
+                                          serviceName: "Bileklikler".obs,
+                                          iconPath: 'assets/images/bracelet.png'.obs,
+                                        ),
+
+                                        //Kolye Service Container
+                                        ServiceContainerWidget(
+                                          onTap: () {},
+                                          serviceName: "Saatler".obs,
+                                          iconPath: 'assets/images/watch.png'.obs,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
                       ),
+                    ),
+
+                    //İletişim
+                    Column(
+                      children: [
+                        Row(
+                          children: [
+                            Container(height: 200, width: 768, color: Colors.black),
+                            Container(height: 200, width: 768, color: Colors.grey),
+                          ],
+                        ),
+                        Container(
+                          height: 14,
+                          width: 1536,
+                          color: const Color.fromARGB(255, 33, 92, 255),
+                          child: const Center(
+                            child: Text(
+                              "Mayday Software Copyright © 2023",
+                              style: TextStyle(fontSize: 10),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ],
                 ),
