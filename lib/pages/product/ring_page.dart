@@ -29,8 +29,13 @@ class _RingPageState extends State<RingPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    //burdaki amaç her sayfa ayrı listede
     List<List<CardWidget>> CardItem = [
       [
+        CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
+        CardWidget(text: 'Halka Pırlantalı Nişan Yüzüğü '.obs, text2: 'Y345KC'.obs, image: 'assets/images/ring_img.jpg'.obs),
+        CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
+        CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
         CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
         CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
         CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
@@ -55,6 +60,7 @@ class _RingPageState extends State<RingPage> {
     return Scaffold(
       body: Column(
         children: [
+          //12 Card Widget den sonra 2. sayfaya geçiş
           Expanded(
             child: PageView.builder(
               itemCount: CardItem.length,
@@ -80,6 +86,7 @@ class _RingPageState extends State<RingPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              //2. sayfadayken 1. sayfaya dönmek için
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.transparent, // Background color
@@ -98,6 +105,7 @@ class _RingPageState extends State<RingPage> {
                 ),
               ),
               const SizedBox(width: 20),
+              //sayfa geçişi
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.transparent, // Background color
