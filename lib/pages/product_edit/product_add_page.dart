@@ -57,7 +57,10 @@ class _ProductAddPageState extends State<ProductAddPage> {
                         color: const Color.fromARGB(255, 214, 214, 213),
                       ),
                       child: _imageFile != null
-                          ? Image.memory(_imageFile!)
+                          ? Image.memory(
+                              _imageFile!,
+                              fit: BoxFit.cover,
+                            )
                           : IconButton(
                               icon: const Icon(
                                 Icons.add,
