@@ -25,19 +25,10 @@ class _ServiceContainerWidgetState extends State<ServiceContainerWidget> {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 500),
-        curve: Curves.easeOutSine,
-        width: isHover ? 270 : 250,
-        height: isHover ? 170 : 150,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 210, 210, 210),
-              Color.fromARGB(255, 136, 136, 136),
-            ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-          ),
-        ),
+        curve: Curves.fastOutSlowIn,
+        width: 250,
+        height: 150,
+        color: isHover ? Colors.blue.shade100 : const Color.fromARGB(255, 215, 215, 215),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

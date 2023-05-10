@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:product_scala/controllers/index/index_controller.dart';
+import 'package:product_scala/widgets/contact_us_widget.dart';
 import 'package:product_scala/widgets/service_container_widget.dart';
 
 class AboutUsPage extends StatefulWidget {
@@ -11,6 +13,14 @@ class AboutUsPage extends StatefulWidget {
 }
 
 class _AboutUsPageState extends State<AboutUsPage> {
+  IndexController? indexController;
+
+  @override
+  void initState() {
+    indexController = Get.find(tag: "index");
+    super.initState();
+  }
+
   List imageUrls = [
     {"image_path": 'assets/images/carousel_1.jpeg'},
     {"image_path": 'assets/images/carousel_2.jpeg'},
@@ -94,7 +104,6 @@ class _AboutUsPageState extends State<AboutUsPage> {
               // Hizmetlerimiz
               Padding(
                 padding: const EdgeInsets.only(top: 100.0),
-
                 //Descriptions
                 child: Column(
                   children: [
@@ -125,90 +134,125 @@ class _AboutUsPageState extends State<AboutUsPage> {
                           ),
 
                           //Product Animated Containers
-                          SizedBox(
-                            height: 500,
-                            width: 1000,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 10.0, right: 10, top: 30, bottom: 30),
-                              child: Column(
-                                children: [
-                                  //Hizmetler 1
-                                  Padding(
-                                    padding: const EdgeInsets.all(25.0),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        //Yüzük Service Container
-                                        ServiceContainerWidget(
-                                          onTap: () {},
-                                          serviceName: "Yüzükler".obs,
-                                          iconPath: 'assets/images/diamond-ring.png'.obs,
-                                        ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 10, top: 30, bottom: 30),
+                            child: Column(
+                              children: [
+                                //Hizmetler 1
+                                Padding(
+                                  padding: const EdgeInsets.all(25.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      //Yüzük Service Container
+                                      ServiceContainerWidget(
+                                        onTap: () {
+                                          indexController!.index.value = 1;
+                                          indexController!.selectedMenuIndex.value = 1;
+                                        },
+                                        serviceName: "Yüzükler".obs,
+                                        iconPath: 'assets/images/diamond-ring.png'.obs,
+                                      ),
 
-                                        //Kolye Service Container
-                                        ServiceContainerWidget(
-                                          onTap: () {},
-                                          serviceName: "Kolyeler".obs,
-                                          iconPath: 'assets/images/necklace.png'.obs,
-                                        ),
-                                      ],
-                                    ),
+                                      //Kolye Service Container
+                                      ServiceContainerWidget(
+                                        onTap: () {
+                                          indexController!.index.value = 2;
+                                          indexController!.selectedMenuIndex.value = 2;
+                                        },
+                                        serviceName: "Kolyeler".obs,
+                                        iconPath: 'assets/images/necklace.png'.obs,
+                                      ),
+
+                                      //Yüzük Service Container
+                                      ServiceContainerWidget(
+                                        onTap: () {
+                                          indexController!.index.value = 3;
+                                          indexController!.selectedMenuIndex.value = 3;
+                                        },
+                                        serviceName: "Bileklikler".obs,
+                                        iconPath: 'assets/images/bracelet.png'.obs,
+                                      ),
+
+                                      //Kolye Service Container
+                                      ServiceContainerWidget(
+                                        onTap: () {
+                                          indexController!.index.value = 4;
+                                          indexController!.selectedMenuIndex.value = 4;
+                                        },
+                                        serviceName: "Saatler".obs,
+                                        iconPath: 'assets/images/watch.png'.obs,
+                                      ),
+                                    ],
                                   ),
-
-                                  //Hizmetler 2
-                                  Padding(
-                                    padding: const EdgeInsets.all(25.0),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        //Yüzük Service Container
-                                        ServiceContainerWidget(
-                                          onTap: () {},
-                                          serviceName: "Bileklikler".obs,
-                                          iconPath: 'assets/images/bracelet.png'.obs,
-                                        ),
-
-                                        //Kolye Service Container
-                                        ServiceContainerWidget(
-                                          onTap: () {},
-                                          serviceName: "Saatler".obs,
-                                          iconPath: 'assets/images/watch.png'.obs,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
                     ),
-
-                    //İletişim
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(height: 200, width: 768, color: Colors.black),
-                            Container(height: 200, width: 768, color: Colors.grey),
-                          ],
-                        ),
-                        Container(
-                          height: 14,
-                          width: 1536,
-                          color: const Color.fromARGB(255, 33, 92, 255),
-                          child: const Center(
-                            child: Text(
-                              "Mayday Software Copyright © 2023",
-                              style: TextStyle(fontSize: 10),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
                   ],
                 ),
+              ),
+
+              //Contact Us
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        height: 100,
+                        width: 1536,
+                        color: Colors.black,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            //Instagram
+                            ContactUsWidget(
+                              contactName: "silosmucevherat".obs,
+                              iconPath: 'assets/images/instagram.png'.obs,
+                            ),
+
+                            //WhatsApp
+                            ContactUsWidget(
+                              contactName: "0 537 429 19 19".obs,
+                              iconPath: 'assets/images/whatsapp.png'.obs,
+                            ),
+
+                            ContactUsWidget(
+                              contactName: "silosmucevherat".obs,
+                              iconPath: 'assets/images/facebook.png'.obs,
+                            ),
+
+                            //Mail
+                            ContactUsWidget(
+                              contactName: "sc.ilhann@gmail.com".obs,
+                              iconPath: 'assets/images/gmail.png'.obs,
+                            ),
+
+                            const Text(
+                              "by Cevher İlhan",
+                              style: TextStyle(fontSize: 25, fontFamily: 'GreatVibes', color: Colors.grey),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  //Mayday Software
+                  Container(
+                    height: 14,
+                    width: 1536,
+                    color: const Color.fromARGB(255, 33, 92, 255),
+                    child: const Center(
+                      child: Text(
+                        "Mayday Software Copyright © 2023",
+                        style: TextStyle(fontSize: 10),
+                      ),
+                    ),
+                  )
+                ],
               ),
             ],
           ),

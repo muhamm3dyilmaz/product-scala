@@ -11,8 +11,6 @@ class IndexController extends GetxController {
   RxInt index = 0.obs;
   RxInt selectedMenuIndex = 0.obs;
 
-  RxInt gecis = 0.obs;
-
   List<Widget> menu = const [
     AboutUsPage(),
     RingPage(),
