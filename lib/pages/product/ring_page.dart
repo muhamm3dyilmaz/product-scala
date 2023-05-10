@@ -54,6 +54,16 @@ class _RingPageState extends State<RingPage> {
         CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
         CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
         CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
+      ],
+      [
+        CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'asdasd'.obs, image: 'assets/images/Ring.jpg'.obs),
+        CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
+        CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
+        CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
+        CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
+        CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
+        CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
+        CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
       ]
     ];
 

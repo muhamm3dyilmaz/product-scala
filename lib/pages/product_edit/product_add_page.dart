@@ -1,4 +1,8 @@
+import 'dart:html' as html;
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:product_scala/widgets/textform_widget.dart';
 
 const List<String> list = <String>['Yüzük', 'Kolye', 'Bileklik', 'Saat'];
@@ -11,10 +15,30 @@ class ProductAddPage extends StatefulWidget {
 }
 
 class _ProductAddPageState extends State<ProductAddPage> {
+  Uint8List? _imageFile;
+
   String dropdownValue = list.first;
+
+  get base64 => null;
+
+  Future<void> _pickImage(ImageSource source) async {
+    final pickedFile = await ImagePicker().getImage(source: source);
+    if (pickedFile != null) {
+      final bytes = await pickedFile.readAsBytes();
+      setState(() {
+        _imageFile = bytes;
+      });
+    } else {
+      setState(() {
+        _imageFile = null;
+        debugPrint('Image file picked: $_imageFile');
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    var _mediaQuery = MediaQuery.of(context);
+    final _mediaQuery = MediaQuery.of(context);
     return Scaffold(
       body: Column(
         children: [
@@ -32,13 +56,17 @@ class _ProductAddPageState extends State<ProductAddPage> {
                         borderRadius: BorderRadius.circular(10),
                         color: const Color.fromARGB(255, 214, 214, 213),
                       ),
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.add,
-                          size: 50,
-                        ),
-                        onPressed: () {},
-                      ),
+                      child: _imageFile != null
+                          ? Image.memory(_imageFile!)
+                          : IconButton(
+                              icon: const Icon(
+                                Icons.add,
+                                size: 50,
+                              ),
+                              onPressed: () async {
+                                await _pickImage(ImageSource.gallery);
+                              },
+                            ),
                     ),
                   ),
                 ],
@@ -90,16 +118,14 @@ class _ProductAddPageState extends State<ProductAddPage> {
                         style: const TextStyle(
                           color: Color.fromARGB(255, 70, 70, 70),
                         ),
-                        underline:
-                            Container(height: 2, color: Colors.transparent),
+                        underline: Container(height: 2, color: Colors.transparent),
                         onChanged: (String? value) {
                           // This is called when the user selects an item.
                           setState(() {
                             dropdownValue = value!;
                           });
                         },
-                        items:
-                            list.map<DropdownMenuItem<String>>((String value) {
+                        items: list.map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
