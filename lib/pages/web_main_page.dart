@@ -86,7 +86,7 @@ class _WebMainPageState extends State<WebMainPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 197, 197, 197),
-        toolbarHeight: 80,
+        toolbarHeight: 90,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

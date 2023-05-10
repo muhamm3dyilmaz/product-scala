@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:product_scala/controllers/index/index_controller.dart';
 import 'package:product_scala/widgets/contact_us_widget.dart';
-import 'package:product_scala/widgets/service_container_widget.dart';
+import 'package:product_scala/widgets/category_card_widget.dart';
 
 class AboutUsPage extends StatefulWidget {
   const AboutUsPage({super.key});
@@ -33,6 +33,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
 
   @override
   Widget build(BuildContext context) {
+    var _mediaQuery = MediaQuery.of(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 253, 246),
       body: Padding(
@@ -47,12 +48,12 @@ class _AboutUsPageState extends State<AboutUsPage> {
                       (item) => Image.asset(
                         item['image_path'],
                         fit: BoxFit.fill,
-                        width: double.infinity,
+                        width: 1050,
                       ),
                     )
                     .toList(),
                 options: CarouselOptions(
-                  height: 650,
+                  height: 500,
                   scrollPhysics: const BouncingScrollPhysics(),
                   autoPlay: true,
                   aspectRatio: 2,
@@ -67,129 +68,110 @@ class _AboutUsPageState extends State<AboutUsPage> {
                 ),
               ),
 
-              //Neden Silös Mücevherat
-              Padding(
-                padding: const EdgeInsets.only(top: 100.0),
-
-                //Descriptions
-                child: Column(
-                  children: const [
-                    //Title
-                    Text(
-                      "Neden Silös Mücevherat?",
-                      style: TextStyle(color: Color.fromARGB(255, 33, 92, 255), fontSize: 45, fontFamily: 'SignikaNegative'),
-                    ),
-
-                    //Divider
-                    SizedBox(
-                      width: 250,
-                      child: Divider(
-                        color: Color.fromARGB(255, 33, 92, 255),
-                      ),
-                    ),
-
-                    //Content
-                    Padding(
-                      padding: EdgeInsets.only(top: 40.0, bottom: 40, left: 60, right: 60),
-                      child: Text(
-                        "Sektörde yıllarca hizmet etmiş ustalardan eğitim almış bir çırak olarak, kaliteden, hizmetten ve müşteri memnuniyetinden ödün vermeden, sektördeki eksikliklikleri görüp tamamlayan genç bir girişimci",
-                        maxLines: 10,
-                        style: TextStyle(color: Colors.black, fontSize: 16, fontFamily: 'SignikaNegative'),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
               // Hizmetlerimiz
               Padding(
                 padding: const EdgeInsets.only(top: 100.0),
                 //Descriptions
                 child: Column(
                   children: [
-                    //Title
-                    const Text(
-                      "Hizmetlerimiz",
-                      style: TextStyle(color: Color.fromARGB(255, 33, 92, 255), fontSize: 45, fontFamily: 'SignikaNegative'),
-                    ),
-
-                    //Divider
-                    const SizedBox(
-                      width: 250,
-                      child: Divider(
-                        color: Color.fromARGB(255, 33, 92, 255),
+                    //Banner
+                    Container(
+                      height: _mediaQuery.size.width * 0.06,
+                      width: _mediaQuery.size.width * 0.66,
+                      color: Color.fromARGB(255, 219, 219, 219),
+                      //Title
+                      child: const Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Text(
+                          "Kaliteyi 12'den Vurun...",
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 65, 65, 65),
+                            fontSize: 34,
+                            fontFamily: 'SignikaNegative',
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
 
                     //Hizmetler
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40.0, bottom: 40, left: 60, right: 60),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Müşterilerimize hizmet verdiğimiz ürün skalamız başlıca:",
-                            maxLines: 10,
-                            style: TextStyle(color: Colors.black, fontSize: 16, fontFamily: 'SignikaNegative'),
-                          ),
+                    SizedBox(
+                      width: _mediaQuery.size.width * 0.8,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 40.0, bottom: 40, left: 60, right: 60),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            //Product Animated Containers
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0, right: 10, top: 30, bottom: 30),
+                              child: Column(
+                                children: [
+                                  // Category Cards 1
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 30.0),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        //Yüzükler Category Card
+                                        CategoryCardWidget(
+                                          onTap: () {
+                                            indexController!.index.value = 1;
+                                            indexController!.selectedMenuIndex.value = 1;
+                                          },
+                                          serviceName: "Yüzükler".obs,
+                                          iconPath: 'assets/images/ring_img.jpg'.obs,
+                                        ),
 
-                          //Product Animated Containers
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0, right: 10, top: 30, bottom: 30),
-                            child: Column(
-                              children: [
-                                //Hizmetler 1
-                                Padding(
-                                  padding: const EdgeInsets.all(25.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      //Yüzük Service Container
-                                      ServiceContainerWidget(
-                                        onTap: () {
-                                          indexController!.index.value = 1;
-                                          indexController!.selectedMenuIndex.value = 1;
-                                        },
-                                        serviceName: "Yüzükler".obs,
-                                        iconPath: 'assets/images/diamond-ring.png'.obs,
-                                      ),
-
-                                      //Kolye Service Container
-                                      ServiceContainerWidget(
-                                        onTap: () {
-                                          indexController!.index.value = 2;
-                                          indexController!.selectedMenuIndex.value = 2;
-                                        },
-                                        serviceName: "Kolyeler".obs,
-                                        iconPath: 'assets/images/necklace.png'.obs,
-                                      ),
-
-                                      //Yüzük Service Container
-                                      ServiceContainerWidget(
-                                        onTap: () {
-                                          indexController!.index.value = 3;
-                                          indexController!.selectedMenuIndex.value = 3;
-                                        },
-                                        serviceName: "Bileklikler".obs,
-                                        iconPath: 'assets/images/bracelet.png'.obs,
-                                      ),
-
-                                      //Kolye Service Container
-                                      ServiceContainerWidget(
-                                        onTap: () {
-                                          indexController!.index.value = 4;
-                                          indexController!.selectedMenuIndex.value = 4;
-                                        },
-                                        serviceName: "Saatler".obs,
-                                        iconPath: 'assets/images/watch.png'.obs,
-                                      ),
-                                    ],
+                                        //Kolye Category Card
+                                        CategoryCardWidget(
+                                          onTap: () {
+                                            indexController!.index.value = 2;
+                                            indexController!.selectedMenuIndex.value = 2;
+                                          },
+                                          serviceName: "Kolyeler".obs,
+                                          iconPath: 'assets/images/necklace_img.jpg'.obs,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+
+                                  // Category Cards 2
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 30.0),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        //Bileklik Category Card
+                                        CategoryCardWidget(
+                                          onTap: () {
+                                            indexController!.index.value = 3;
+                                            indexController!.selectedMenuIndex.value = 3;
+                                          },
+                                          serviceName: "Bileklikler".obs,
+                                          iconPath: 'assets/images/bracelet_img.jpg'.obs,
+                                        ),
+
+                                        //Saat Category Card
+                                        CategoryCardWidget(
+                                          onTap: () {
+                                            indexController!.index.value = 4;
+                                            indexController!.selectedMenuIndex.value = 4;
+                                          },
+                                          serviceName: "Saatler".obs,
+                                          iconPath: 'assets/images/watch_img.jpg'.obs,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [],
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
