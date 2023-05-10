@@ -38,7 +38,7 @@ class _ProductAddPageState extends State<ProductAddPage> {
 
   @override
   Widget build(BuildContext context) {
-    var _mediaQuery = MediaQuery.of(context);
+    final _mediaQuery = MediaQuery.of(context);
     return Scaffold(
       body: Column(
         children: [
