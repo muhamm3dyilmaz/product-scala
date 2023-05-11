@@ -48,10 +48,10 @@ class _ProductAddPageState extends State<ProductAddPage> {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(85, 100, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(85, 45, 0, 0),
                     child: Container(
-                      height: _mediaQuery.size.height * 0.6,
-                      width: _mediaQuery.size.width * 0.25,
+                      height: _mediaQuery.size.height * 0.7,
+                      width: _mediaQuery.size.width * 0.4,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: const Color.fromARGB(255, 214, 214, 213),
@@ -111,7 +111,7 @@ class _ProductAddPageState extends State<ProductAddPage> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       height: _mediaQuery.size.height * 0.06,
-                      width: _mediaQuery.size.width * 0.4,
+                      width: _mediaQuery.size.width * 0.45,
                       child: DropdownButton<String>(
                         isExpanded: true,
                         focusColor: const Color.fromARGB(255, 255, 255, 255),
@@ -121,14 +121,16 @@ class _ProductAddPageState extends State<ProductAddPage> {
                         style: const TextStyle(
                           color: Color.fromARGB(255, 70, 70, 70),
                         ),
-                        underline: Container(height: 2, color: Colors.transparent),
+                        underline:
+                            Container(height: 2, color: Colors.transparent),
                         onChanged: (String? value) {
                           // This is called when the user selects an item.
                           setState(() {
                             dropdownValue = value!;
                           });
                         },
-                        items: list.map<DropdownMenuItem<String>>((String value) {
+                        items:
+                            list.map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
@@ -141,6 +143,14 @@ class _ProductAddPageState extends State<ProductAddPage> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(40, 25, 0, 170),
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        elevation: 10,
+                        textStyle: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontStyle: FontStyle.normal),
+                      ),
                       onPressed: () {},
                       child: const Text("Ekle"),
                     ),
