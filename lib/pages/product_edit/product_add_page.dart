@@ -45,34 +45,48 @@ class _ProductAddPageState extends State<ProductAddPage> {
           Row(
             children: [
               //büyük container
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(85, 45, 0, 0),
-                    child: Container(
-                      height: _mediaQuery.size.height * 0.7,
-                      width: _mediaQuery.size.width * 0.4,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color.fromARGB(255, 214, 214, 213),
-                      ),
-                      child: _imageFile != null
-                          ? Image.memory(
-                              _imageFile!,
-                              fit: BoxFit.cover,
-                            )
-                          : IconButton(
-                              icon: const Icon(
-                                Icons.add,
-                                size: 50,
+              Material(
+                color: Colors.transparent,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(85, 45, 0, 0),
+                      child: InkWell(
+                        hoverColor: Colors.red,
+                        child: Container(
+                          height: _mediaQuery.size.height * 0.7,
+                          width: _mediaQuery.size.width * 0.4,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color.fromARGB(255, 214, 214, 213),
+                            boxShadow: const [
+                              BoxShadow(
+                                blurRadius: 4,
+                                offset: Offset(2, 4),
+                                spreadRadius: 3,
+                                color: Color.fromARGB(255, 179, 178, 178),
                               ),
-                              onPressed: () async {
-                                await _pickImage(ImageSource.gallery);
-                              },
-                            ),
+                            ],
+                          ),
+                          child: _imageFile != null
+                              ? Image.memory(
+                                  _imageFile!,
+                                  fit: BoxFit.cover,
+                                )
+                              : IconButton(
+                                  icon: const Icon(
+                                    Icons.add,
+                                    size: 50,
+                                  ),
+                                  onPressed: () async {
+                                    await _pickImage(ImageSource.gallery);
+                                  },
+                                ),
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               //textformfieldlar
               Column(
