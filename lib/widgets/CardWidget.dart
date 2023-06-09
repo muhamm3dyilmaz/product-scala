@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:product_scala/controllers/index/index_controller.dart';
+import 'package:product_scala/pages/ImageDetailPage.dart';
 
 class CardWidget extends StatefulWidget {
   const CardWidget({
@@ -19,6 +20,7 @@ class CardWidget extends StatefulWidget {
 class _CardWidgetState extends State<CardWidget> {
   IndexController? indexController;
   bool isHover = false;
+
   @override
   void initState() {
     indexController = Get.find(tag: "index");
@@ -29,10 +31,17 @@ class _CardWidgetState extends State<CardWidget> {
   Widget build(BuildContext context) {
     return Obx(
       () => Padding(
-        padding: const EdgeInsets.fromLTRB(60, 40, 20, 20),
+        padding: const EdgeInsets.fromLTRB(40, 40, 40, 20),
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
-          onTap: () {},
+          onTap: () {
+            // Get.to(ImageDetailPage(imageUrl: widget.image.value.obs));
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ImageDetailPage(imageUrl: widget.image.value),
+              ),
+            );
+          },
           onHover: (value) {
             setState(() {
               isHover = value;
@@ -41,23 +50,20 @@ class _CardWidgetState extends State<CardWidget> {
           child: Container(
             decoration: BoxDecoration(
               border: Border.all(color: isHover ? Colors.black : const Color.fromARGB(255, 215, 215, 215), width: 1),
-              borderRadius: BorderRadius.circular(20),
               color: const Color.fromARGB(255, 215, 215, 215),
             ),
-            width: 350,
+            width: 320,
             height: 510,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                  decoration: const BoxDecoration(
                     color: Colors.transparent,
                   ),
                   height: 390,
-                  width: 350,
+                  width: 430,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
                     child: Image.asset(
                       widget.image.value,
                       fit: BoxFit.cover,
