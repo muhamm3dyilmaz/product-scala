@@ -48,6 +48,7 @@ class _RingPageState extends State<RingPage> {
       CardWidget(text: 'Halka Pırlantalı Nişan Yüzüğü '.obs, text2: 'Y345KC'.obs, image: 'assets/images/ring_img.jpg'.obs),
       CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'asdasd'.obs, image: 'assets/images/Ring.jpg'.obs),
       CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
+      CardWidget(text: 'Tek Taş Baget Pırlanta Yüzük '.obs, text2: 'K380YU'.obs, image: 'assets/images/Ring.jpg'.obs),
     ];
 
     return Scaffold(
