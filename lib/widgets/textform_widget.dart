@@ -17,10 +17,10 @@ class _TextFormWidgetState extends State<TextFormWidget> {
     var _mediaQuery = MediaQuery.of(context);
     return SizedBox(
       height: _mediaQuery.size.height * 0.1,
-      width: _mediaQuery.size.width * 0.4,
+      width: _mediaQuery.size.width * 0.45,
       child: TextFormField(
-        style: const TextStyle(color: Colors.white),
-        cursorColor: Colors.white,
+        style: const TextStyle(color: Color.fromARGB(255, 19, 18, 18)),
+        cursorColor: const Color.fromARGB(255, 11, 11, 11),
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(
             vertical: 10,

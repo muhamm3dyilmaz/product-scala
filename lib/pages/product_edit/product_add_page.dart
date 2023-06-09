@@ -45,34 +45,48 @@ class _ProductAddPageState extends State<ProductAddPage> {
           Row(
             children: [
               //büyük container
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(85, 100, 0, 0),
-                    child: Container(
-                      height: _mediaQuery.size.height * 0.6,
-                      width: _mediaQuery.size.width * 0.25,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color.fromARGB(255, 214, 214, 213),
-                      ),
-                      child: _imageFile != null
-                          ? Image.memory(
-                              _imageFile!,
-                              fit: BoxFit.cover,
-                            )
-                          : IconButton(
-                              icon: const Icon(
-                                Icons.add,
-                                size: 50,
+              Material(
+                color: Colors.transparent,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(85, 45, 0, 0),
+                      child: InkWell(
+                        hoverColor: Colors.red,
+                        child: Container(
+                          height: _mediaQuery.size.height * 0.7,
+                          width: _mediaQuery.size.width * 0.4,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color.fromARGB(255, 214, 214, 213),
+                            boxShadow: const [
+                              BoxShadow(
+                                blurRadius: 4,
+                                offset: Offset(2, 4),
+                                spreadRadius: 3,
+                                color: Color.fromARGB(255, 179, 178, 178),
                               ),
-                              onPressed: () async {
-                                await _pickImage(ImageSource.gallery);
-                              },
-                            ),
+                            ],
+                          ),
+                          child: _imageFile != null
+                              ? Image.memory(
+                                  _imageFile!,
+                                  fit: BoxFit.cover,
+                                )
+                              : IconButton(
+                                  icon: const Icon(
+                                    Icons.add,
+                                    size: 50,
+                                  ),
+                                  onPressed: () async {
+                                    await _pickImage(ImageSource.gallery);
+                                  },
+                                ),
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               //textformfieldlar
               Column(
@@ -111,7 +125,7 @@ class _ProductAddPageState extends State<ProductAddPage> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       height: _mediaQuery.size.height * 0.06,
-                      width: _mediaQuery.size.width * 0.4,
+                      width: _mediaQuery.size.width * 0.45,
                       child: DropdownButton<String>(
                         isExpanded: true,
                         focusColor: const Color.fromARGB(255, 255, 255, 255),
@@ -121,14 +135,16 @@ class _ProductAddPageState extends State<ProductAddPage> {
                         style: const TextStyle(
                           color: Color.fromARGB(255, 70, 70, 70),
                         ),
-                        underline: Container(height: 2, color: Colors.transparent),
+                        underline:
+                            Container(height: 2, color: Colors.transparent),
                         onChanged: (String? value) {
                           // This is called when the user selects an item.
                           setState(() {
                             dropdownValue = value!;
                           });
                         },
-                        items: list.map<DropdownMenuItem<String>>((String value) {
+                        items:
+                            list.map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
@@ -141,6 +157,14 @@ class _ProductAddPageState extends State<ProductAddPage> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(40, 25, 0, 170),
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        elevation: 10,
+                        textStyle: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontStyle: FontStyle.normal),
+                      ),
                       onPressed: () {},
                       child: const Text("Ekle"),
                     ),
